@@ -13,4 +13,6 @@ class Input(day: String) {
 
     fun getStringPairs(delimiter: String): List<Pair<String, String>> =
         file.readLines().map { it.substringBefore(delimiter) to it.substringAfter(delimiter) }
+
+    fun getCharMatrix(): List<List<Char>> = file.readLines().map { it.toList() }
 }
