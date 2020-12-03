@@ -10,4 +10,7 @@ class Input(day: String) {
     fun getSplitStrings(vararg delimiters: Char): List<String> = file.readText().split(*delimiters)
 
     fun getSplitInts(vararg delimiters: Char): List<Int> = file.readText().split(*delimiters).map { it.toInt() }
+
+    fun getStringPairs(delimiter: String): List<Pair<String, String>> =
+        file.readLines().map { it.substringBefore(delimiter) to it.substringAfter(delimiter) }
 }
