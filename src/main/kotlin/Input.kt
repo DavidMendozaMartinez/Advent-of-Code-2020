@@ -15,4 +15,17 @@ class Input(day: String) {
         file.readLines().map { it.substringBefore(delimiter) to it.substringAfter(delimiter) }
 
     fun getCharMatrix(): List<List<Char>> = file.readLines().map { it.toList() }
+
+    fun getStringMapList(
+        elementDelimiter: String,
+        vararg pairDelimiter: String,
+        stringDelimiter: String
+    ): List<Map<String, String>> =
+        file.readText()
+            .split(elementDelimiter)
+            .map { element ->
+                element
+                    .split(*pairDelimiter)
+                    .associateBy({ it.substringBefore(stringDelimiter) }, { it.substringAfter(stringDelimiter) })
+            }
 }
