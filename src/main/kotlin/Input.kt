@@ -16,6 +16,9 @@ class Input(day: String) {
 
     fun getCharMatrix(): List<List<Char>> = file.readLines().map { it.toList() }
 
+    fun getStringGroupList(elementDelimiter: String, stringDelimiter: String): List<List<String>> =
+        file.readText().split(elementDelimiter).map { it.split(stringDelimiter) }
+
     fun getStringMapList(
         elementDelimiter: String,
         vararg pairDelimiter: String,
