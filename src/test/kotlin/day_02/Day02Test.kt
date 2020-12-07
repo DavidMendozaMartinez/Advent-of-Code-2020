@@ -17,12 +17,12 @@ class Day02Test {
     @Test
     fun `Day 02 - Part 1 - Expected output when providing sample input`() {
         val expected = 2
-        assertEquals(expected, day.invokePart1())
+        assertEquals(expected, day.solvePart1())
     }
 
     @Test
     fun `Day 02 - Part 2 - Expected output when providing sample input`() {
         val expected = 1
-        assertEquals(expected, day.invokePart2())
+        assertEquals(expected, day.solvePart2())
     }
 }

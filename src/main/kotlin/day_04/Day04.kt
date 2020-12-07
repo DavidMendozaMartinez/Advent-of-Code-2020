@@ -10,19 +10,16 @@ fun main() {
         pairDelimiter = arrayOf(" ", "\n"),
         stringDelimiter = ":"
     )
-    val day = Day04(input)
-
-    println("Day $dayNumber (Part 1) - Answer: ${day.invokePart1()}")
-    println("Day $dayNumber (Part 2) - Answer: ${day.invokePart2()}")
+    Day04(input).solve(dayNumber)
 }
 
 class Day04(var input: List<Map<String, String>> = emptyList()) : Day<Int, Int>() {
 
-    override fun invokePart1(): Int = input.count {
+    override fun solvePart1(): Int = input.count {
         hasAllRequiredFields(it.keys, optional = setOf(Field.CountryID))
     }
 
-    override fun invokePart2(): Int = input.count {
+    override fun solvePart2(): Int = input.count {
         val hasRequiredFields = hasAllRequiredFields(it.keys, optional = setOf(Field.CountryID))
         val isEachValueValid = it.all { entry -> Field.parse(entry.key).isValueValid(entry.value) }
 
@@ -44,9 +41,7 @@ class Day04(var input: List<Map<String, String>> = emptyList()) : Day<Int, Int>(
                 else -> false
             }
         }),
-        HairColor("hcl", { color ->
-            color.length == 7 && color.first() == '#' && color.takeLast(6).toLongOrNull(16)?.let { true } ?: false
-        }),
+        HairColor("hcl", { "#[0-9a-f]{6}".toRegex().matches(it) }),
         EyeColor("ecl", { it in listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth") }),
         PassportID("pid", { id -> id.length == 9 && id.all { it.isDigit() } }),
         CountryID("cid", { true });

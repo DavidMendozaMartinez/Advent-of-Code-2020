@@ -30,12 +30,12 @@ class Day03Test {
     @Test
     fun `Day 03 - Part 1 - Expected output when providing sample input`() {
         val expected = 7
-        assertEquals(expected, day.invokePart1())
+        assertEquals(expected, day.solvePart1())
     }
 
     @Test
     fun `Day 03 - Part 2 - Expected output when providing sample input`() {
         val expected = 336L
-        assertEquals(expected, day.invokePart2())
+        assertEquals(expected, day.solvePart2())
     }
 }

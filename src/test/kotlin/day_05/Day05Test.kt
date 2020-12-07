@@ -19,7 +19,7 @@ class Day05Test {
         day.input = input
 
         val expected = 820
-        assertEquals(expected, day.invokePart1())
+        assertEquals(expected, day.solvePart1())
     }
 
     @Test
@@ -28,6 +28,6 @@ class Day05Test {
         day.input = input
 
         val expected = 357
-        assertEquals(expected, day.invokePart2())
+        assertEquals(expected, day.solvePart2())
     }
 }
