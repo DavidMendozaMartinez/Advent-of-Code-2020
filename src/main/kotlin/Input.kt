@@ -3,7 +3,7 @@ import java.io.File
 class Input(day: String) {
     private val file = File("src/main/kotlin/day_$day/input.txt")
 
-    fun getStrings(): List<String> = file.readLines()
+    fun getStrings(block: String.() -> String = { this }): List<String> = file.readLines().map(block)
 
     fun getInts(): List<Int> = file.readLines().map { it.toInt() }
 
