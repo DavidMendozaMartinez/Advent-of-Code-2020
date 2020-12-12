@@ -7,6 +7,8 @@ class Input(day: String) {
 
     fun getInts(): List<Int> = file.readLines().map { it.toInt() }
 
+    fun getLongs(): List<Long> = file.readLines().map { it.toLong() }
+
     fun getSplitStrings(vararg delimiters: Char): List<String> = file.readText().split(*delimiters)
 
     fun getSplitInts(vararg delimiters: Char): List<Int> = file.readText().split(*delimiters).map { it.toInt() }
