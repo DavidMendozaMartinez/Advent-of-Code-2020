@@ -1,25 +1,24 @@
 package day_01
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "01"
-    val input = Input(dayNumber).getInts()
-    Day01(input).solve()
+    Day01().solve()
 }
 
-class Day01(private val input: List<Int>) : Day<Int, Int>("01") {
+class Day01(reader: Reader<List<Int>> = Day01Reader()) : Day<Int, Int>("01") {
+    private val report: List<Int> = reader.read()
 
     override fun solvePart1(): Int {
-        val firstEntry = input.first { input.contains(2020 - it) }
+        val firstEntry = report.first { report.contains(2020 - it) }
         return firstEntry * (2020 - firstEntry)
     }
 
     override fun solvePart2(): Int {
-        input.forEach { firstEntry ->
-            val candidates = input.filter { it <= (2020 - firstEntry) }
-            val secondEntry = candidates.firstOrNull { input.contains(2020 - (firstEntry + it)) }
+        report.forEach { firstEntry ->
+            val candidates = report.filter { it <= (2020 - firstEntry) }
+            val secondEntry = candidates.firstOrNull { report.contains(2020 - (firstEntry + it)) }
             secondEntry?.let { return firstEntry * secondEntry * (2020 - (firstEntry + secondEntry)) }
         }
         return -1

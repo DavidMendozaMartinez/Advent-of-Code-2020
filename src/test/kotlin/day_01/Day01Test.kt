@@ -10,8 +10,8 @@ class Day01Test {
 
     @Before
     fun setUp() {
-        val input = listOf(1721, 979, 366, 299, 675, 1456)
-        day = Day01(input)
+        val input = listOf("1721", "979", "366", "299", "675", "1456")
+        day = Day01(Day01Reader(input))
     }
 
     @Test
