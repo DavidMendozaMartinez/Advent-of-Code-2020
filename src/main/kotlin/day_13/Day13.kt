@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "13"
     val input = Input(dayNumber).getStrings()
-    Day13(input).solve(dayNumber)
+    Day13(input).solve()
 }
 
-class Day13(input: List<String>) : Day<Int, Long>() {
+class Day13(input: List<String>) : Day<Int, Long>("13") {
     private val earliestTimestamp: Int = input.first().toInt()
     private val ids: List<String> = input.last().split(',')
     private val inService: List<Int> = ids.filter { it != "x" }.map { it.toInt() }

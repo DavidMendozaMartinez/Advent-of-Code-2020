@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "02"
     val input = Input(dayNumber).getStringPairs(": ")
-    Day02(input).solve(dayNumber)
+    Day02(input).solve()
 }
 
-class Day02(private val input: List<Pair<String, String>>) : Day<Int, Int>() {
+class Day02(private val input: List<Pair<String, String>>) : Day<Int, Int>("02") {
 
     override fun solvePart1(): Int = input.count {
         val policy = Policy.parse<Policy.ByRange>(it.first)

@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "09"
     val input = Input(dayNumber).getLongs()
-    Day09(input).solve(dayNumber)
+    Day09(input).solve()
 }
 
-class Day09(private val input: List<Long>) : Day<Long, Long>() {
+class Day09(private val input: List<Long>) : Day<Long, Long>("09") {
     var preamble = 25
 
     override fun solvePart1(): Long = findFirstInvalid()

@@ -7,10 +7,10 @@ import kotlin.math.abs
 fun main() {
     val dayNumber = "12"
     val input = Input(dayNumber).getStrings()
-    Day12(input).solve(dayNumber)
+    Day12(input).solve()
 }
 
-class Day12(input: List<String>) : Day<Int, Int>() {
+class Day12(input: List<String>) : Day<Int, Int>("12") {
     private val instructions: List<Instruction> = input.map { Instruction.parse(it) }
 
     override fun solvePart1(): Int =

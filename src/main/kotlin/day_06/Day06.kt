@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "06"
     val input = Input(dayNumber).getStringGroupList(elementDelimiter = "\n\n", stringDelimiter = "\n")
-    Day06(input).solve(dayNumber)
+    Day06(input).solve()
 }
 
-class Day06(private val input: List<List<String>>) : Day<Int, Int>() {
+class Day06(private val input: List<List<String>>) : Day<Int, Int>("06") {
 
     override fun solvePart1(): Int = input.sumBy { it.joinToString("").toSet().size }
 

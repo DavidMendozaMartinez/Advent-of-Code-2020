@@ -9,10 +9,10 @@ private typealias Seat = Pair<Int, Int>
 fun main() {
     val dayNumber = "11"
     val input = Input(dayNumber).getCharMatrix()
-    Day11(input).solve(dayNumber)
+    Day11(input).solve()
 }
 
-class Day11(private val input: List<List<Char>>) : Day<Int, Int>() {
+class Day11(private val input: List<List<Char>>) : Day<Int, Int>("11") {
 
     override fun solvePart1(): Int =
         SeatLayout(input, Rule(4, ::getAdjacent)).apply { stabilize() }.countOccupiedSeats()

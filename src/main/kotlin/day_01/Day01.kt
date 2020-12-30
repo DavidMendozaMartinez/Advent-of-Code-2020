@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "01"
     val input = Input(dayNumber).getInts()
-    Day01(input).solve(dayNumber)
+    Day01(input).solve()
 }
 
-class Day01(private val input: List<Int>) : Day<Int, Int>() {
+class Day01(private val input: List<Int>) : Day<Int, Int>("01") {
 
     override fun solvePart1(): Int {
         val firstEntry = input.first { input.contains(2020 - it) }

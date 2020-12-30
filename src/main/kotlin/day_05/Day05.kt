@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "05"
     val input = Input(dayNumber).getStrings()
-    Day05(input).solve(dayNumber)
+    Day05(input).solve()
 }
 
-class Day05(var input: List<String> = emptyList()) : Day<Int, Int>() {
+class Day05(var input: List<String> = emptyList()) : Day<Int, Int>("05") {
 
     override fun solvePart1(): Int = input.maxOf { getSeatID(it) }
 

@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "08"
     val input = Input(dayNumber).getStringPairs(" ")
-    Day08(input).solve(dayNumber)
+    Day08(input).solve()
 }
 
-class Day08(input: List<Pair<String, String>>) : Day<Int, Int>() {
+class Day08(input: List<Pair<String, String>>) : Day<Int, Int>("08") {
     private val bootCode: List<Instruction> = input.map { Instruction.parse(it) }
 
     override fun solvePart1(): Int = Game().run(bootCode).accumulator

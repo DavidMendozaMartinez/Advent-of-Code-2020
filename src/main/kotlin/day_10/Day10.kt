@@ -7,10 +7,10 @@ import kotlin.math.pow
 fun main() {
     val dayNumber = "10"
     val input = Input(dayNumber).getInts()
-    Day10(input).solve(dayNumber)
+    Day10(input).solve()
 }
 
-class Day10(var input: List<Int> = emptyList()) : Day<Int, Long>() {
+class Day10(var input: List<Int> = emptyList()) : Day<Int, Long>("10") {
     private val ratings: List<Int>
         get() = input.toMutableList().apply { add(0) }.sorted()
 

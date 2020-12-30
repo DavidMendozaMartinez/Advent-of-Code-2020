@@ -10,10 +10,10 @@ fun main() {
         pairDelimiter = arrayOf(" ", "\n"),
         stringDelimiter = ":"
     )
-    Day04(input).solve(dayNumber)
+    Day04(input).solve()
 }
 
-class Day04(var input: List<Map<String, String>> = emptyList()) : Day<Int, Int>() {
+class Day04(var input: List<Map<String, String>> = emptyList()) : Day<Int, Int>("04") {
 
     override fun solvePart1(): Int = input.count {
         hasAllRequiredFields(it.keys, optional = setOf(Field.CountryID))

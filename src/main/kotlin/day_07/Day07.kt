@@ -10,10 +10,10 @@ fun main() {
             .replace("no other", "0")
             .replace(" contain ", ":")
     }
-    Day07(input).solve(dayNumber)
+    Day07(input).solve()
 }
 
-class Day07(var input: List<String> = emptyList()) : Day<Int, Int>() {
+class Day07(var input: List<String> = emptyList()) : Day<Int, Int>("07") {
 
     companion object {
         const val COLOR = "shiny gold"

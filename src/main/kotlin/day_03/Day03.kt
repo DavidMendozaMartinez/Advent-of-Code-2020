@@ -6,10 +6,10 @@ import Input
 fun main() {
     val dayNumber = "03"
     val input = Input(dayNumber).getCharMatrix()
-    Day03(input).solve(dayNumber)
+    Day03(input).solve()
 }
 
-class Day03(private val input: List<List<Char>>) : Day<Int, Long>() {
+class Day03(private val input: List<List<Char>>) : Day<Int, Long>("03") {
     companion object {
         const val TREE = '#'
     }
