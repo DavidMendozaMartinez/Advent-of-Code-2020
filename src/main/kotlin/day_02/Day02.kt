@@ -1,22 +1,21 @@
 package day_02
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "02"
-    val input = Input(dayNumber).getStringPairs(": ")
-    Day02(input).solve()
+    Day02().solve()
 }
 
-class Day02(private val input: List<Pair<String, String>>) : Day<Int, Int>("02") {
+class Day02(reader: Reader<List<Pair<String, String>>> = Day02Reader()) : Day<Int, Int>("02") {
+    private val corruptedDatabase: List<Pair<String, String>> = reader.read()
 
-    override fun solvePart1(): Int = input.count {
+    override fun solvePart1(): Int = corruptedDatabase.count {
         val policy = Policy.parse<Policy.ByRange>(it.first)
         policy.isPasswordValid(it.second)
     }
 
-    override fun solvePart2(): Int = input.count {
+    override fun solvePart2(): Int = corruptedDatabase.count {
         val policy = Policy.parse<Policy.ByPosition>(it.first)
         policy.isPasswordValid(it.second)
     }
