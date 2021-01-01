@@ -1,15 +1,15 @@
 package day_03
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "03"
-    val input = Input(dayNumber).getCharMatrix()
-    Day03(input).solve()
+    Day03().solve()
 }
 
-class Day03(private val input: List<List<Char>>) : Day<Int, Long>("03") {
+class Day03(reader: Reader<List<List<Char>>> = Day03Reader()) : Day<Int, Long>("03") {
+    private val map: List<List<Char>> = reader.read()
+
     companion object {
         const val TREE = '#'
     }
@@ -23,8 +23,8 @@ class Day03(private val input: List<List<Char>>) : Day<Int, Long>("03") {
 
     private fun countTrees(slope: Pair<Int, Int>): Int {
         var index = -slope.first
-        return input
-            .slice(input.indices step slope.second)
+        return map
+            .slice(map.indices step slope.second)
             .count {
                 index = (index + slope.first) % it.size
                 it[index] == TREE
