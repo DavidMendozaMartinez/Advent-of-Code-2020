@@ -1,20 +1,19 @@
 package day_05
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "05"
-    val input = Input(dayNumber).getStrings()
-    Day05(input).solve()
+    Day05().solve()
 }
 
-class Day05(var input: List<String> = emptyList()) : Day<Int, Int>("05") {
+class Day05(reader: Reader<List<String>> = Day05Reader()) : Day<Int, Int>("05") {
+    private val boardingPasses: List<String> = reader.read()
 
-    override fun solvePart1(): Int = input.maxOf { getSeatID(it) }
+    override fun solvePart1(): Int = boardingPasses.maxOf { getSeatID(it) }
 
     override fun solvePart2(): Int {
-        val ids = input.map { getSeatID(it) }.sorted()
+        val ids = boardingPasses.map { getSeatID(it) }.sorted()
         return (ids.first()..ids.last()).subtract(ids).first()
     }
 
