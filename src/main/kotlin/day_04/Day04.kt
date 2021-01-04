@@ -1,25 +1,20 @@
 package day_04
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "04"
-    val input = Input(dayNumber).getStringMapList(
-        elementDelimiter = "\n\n",
-        pairDelimiter = arrayOf(" ", "\n"),
-        stringDelimiter = ":"
-    )
-    Day04(input).solve()
+    Day04().solve()
 }
 
-class Day04(var input: List<Map<String, String>> = emptyList()) : Day<Int, Int>("04") {
+class Day04(reader: Reader<List<Map<String, String>>> = Day04Reader()) : Day<Int, Int>("04") {
+    private val passports: List<Map<String, String>> = reader.read()
 
-    override fun solvePart1(): Int = input.count {
+    override fun solvePart1(): Int = passports.count {
         hasAllRequiredFields(it.keys, optional = setOf(Field.CountryID))
     }
 
-    override fun solvePart2(): Int = input.count {
+    override fun solvePart2(): Int = passports.count {
         val hasRequiredFields = hasAllRequiredFields(it.keys, optional = setOf(Field.CountryID))
         val isEachValueValid = it.all { entry -> Field.parse(entry.key).isValueValid(entry.value) }
 

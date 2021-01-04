@@ -1,59 +1,28 @@
 package day_04
 
 import org.junit.Assert.assertEquals
-import org.junit.Before
 import org.junit.Test
 
 class Day04Test {
 
     private lateinit var day: Day04
 
-    @Before
-    fun setUp() {
-        day = Day04()
-    }
-
     @Test
     fun `Day 04 - Part 1 - Expected output when providing the first sample input`() {
-        val input = listOf(
-            mapOf(
-                "ecl" to "gry",
-                "pid" to "860033327",
-                "eyr" to "2020",
-                "hcl" to "#fffffd",
-                "byr" to "1937",
-                "iyr" to "2017",
-                "cid" to "147",
-                "hgt" to "183cm"
-            ),
-            mapOf(
-                "iyr" to "2013",
-                "ecl" to "amb",
-                "cid" to "350",
-                "eyr" to "2023",
-                "pid" to "028048884",
-                "hcl" to "#cfa07d",
-                "byr" to "1929"
-            ),
-            mapOf(
-                "hcl" to "#ae17e1",
-                "iyr" to "2013",
-                "eyr" to "2024",
-                "ecl" to "brn",
-                "pid" to "760753108",
-                "byr" to "1931",
-                "hgt" to "179cm"
-            ),
-            mapOf(
-                "hcl" to "#cfa07d",
-                "eyr" to "2025",
-                "pid" to "166559648",
-                "iyr" to "2011",
-                "ecl" to "brn",
-                "hgt" to "59in"
-            )
-        )
-        day.input = input
+        val input = "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n" +
+                "byr:1937 iyr:2017 cid:147 hgt:183cm\n" +
+                "\n" +
+                "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884\n" +
+                "hcl:#cfa07d byr:1929\n" +
+                "\n" +
+                "hcl:#ae17e1 iyr:2013\n" +
+                "eyr:2024\n" +
+                "ecl:brn pid:760753108 byr:1931\n" +
+                "hgt:179cm\n" +
+                "\n" +
+                "hcl:#cfa07d eyr:2025 pid:166559648\n" +
+                "iyr:2011 ecl:brn hgt:59in"
+        day = Day04(Day04Reader(input))
 
         val expected = 2
         assertEquals(expected, day.solvePart1())
@@ -61,47 +30,20 @@ class Day04Test {
 
     @Test
     fun `Day 04 - Part 2 - Expected output when providing the second sample input (invalid passports)`() {
-        val input = listOf(
-            mapOf(
-                "eyr" to "1972",
-                "cid" to "100",
-                "hcl" to "#18171d",
-                "ecl" to "amb",
-                "hgt" to "170",
-                "pid" to "186cm",
-                "iyr" to "2018",
-                "byr" to "1926"
-            ),
-            mapOf(
-                "iyr" to "2019",
-                "hcl" to "#602927",
-                "eyr" to "1967",
-                "hgt" to "170cm",
-                "ecl" to "grn",
-                "pid" to "012533040",
-                "byr" to "1946"
-            ),
-            mapOf(
-                "hcl" to "dab227",
-                "iyr" to "2012",
-                "ecl" to "brn",
-                "hgt" to "182cm",
-                "pid" to "021572410",
-                "eyr" to "2020",
-                "byr" to "1992",
-                "cid" to "277"
-            ),
-            mapOf(
-                "hgt" to "59cm",
-                "ecl" to "zzz",
-                "eyr" to "2038",
-                "hcl" to "74454a",
-                "iyr" to "2023",
-                "pid" to "3556412378",
-                "byr" to "2007"
-            )
-        )
-        day.input = input
+        val input = "eyr:1972 cid:100\n" +
+                "hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926\n" +
+                "\n" +
+                "iyr:2019\n" +
+                "hcl:#602927 eyr:1967 hgt:170cm\n" +
+                "ecl:grn pid:012533040 byr:1946\n" +
+                "\n" +
+                "hcl:dab227 iyr:2012\n" +
+                "ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277\n" +
+                "\n" +
+                "hgt:59cm ecl:zzz\n" +
+                "eyr:2038 hcl:74454a iyr:2023\n" +
+                "pid:3556412378 byr:2007"
+        day = Day04(Day04Reader(input))
 
         val expected = 0
         assertEquals(expected, day.solvePart2())
@@ -109,47 +51,19 @@ class Day04Test {
 
     @Test
     fun `Day 04 - Part 2 - Expected output when providing the third sample input (valid passports)`() {
-        val input = listOf(
-            mapOf(
-                "pid" to "087499704",
-                "hgt" to "74in",
-                "ecl" to "grn",
-                "iyr" to "2012",
-                "eyr" to "2030",
-                "byr" to "1980",
-                "hcl" to "#623a2f"
-            ),
-            mapOf(
-                "eyr" to "2029",
-                "ecl" to "blu",
-                "cid" to "129",
-                "byr" to "1989",
-                "iyr" to "2014",
-                "pid" to "896056539",
-                "hcl" to "#a97842",
-                "hgt" to "165cm"
-            ),
-            mapOf(
-                "hcl" to "#888785",
-                "hgt" to "164cm",
-                "byr" to "2001",
-                "iyr" to "2015",
-                "cid" to "88",
-                "pid" to "545766238",
-                "ecl" to "hzl",
-                "eyr" to "2022"
-            ),
-            mapOf(
-                "iyr" to "2010",
-                "hgt" to "158cm",
-                "hcl" to "#b6652a",
-                "ecl" to "blu",
-                "byr" to "1944",
-                "eyr" to "2021",
-                "pid" to "093154719"
-            )
-        )
-        day.input = input
+        val input = "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\n" +
+                "hcl:#623a2f\n" +
+                "\n" +
+                "eyr:2029 ecl:blu cid:129 byr:1989\n" +
+                "iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm\n" +
+                "\n" +
+                "hcl:#888785\n" +
+                "hgt:164cm byr:2001 iyr:2015 cid:88\n" +
+                "pid:545766238 ecl:hzl\n" +
+                "eyr:2022\n" +
+                "\n" +
+                "iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719"
+        day = Day04(Day04Reader(input))
 
         val expected = 4
         assertEquals(expected, day.solvePart2())
