@@ -1,19 +1,18 @@
 package day_06
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "06"
-    val input = Input(dayNumber).getStringGroupList(elementDelimiter = "\n\n", stringDelimiter = "\n")
-    Day06(input).solve()
+    Day06().solve()
 }
 
-class Day06(private val input: List<List<String>>) : Day<Int, Int>("06") {
+class Day06(reader: Reader<List<List<String>>> = Day06Reader()) : Day<Int, Int>("06") {
+    private val answers: List<List<String>> = reader.read()
 
-    override fun solvePart1(): Int = input.sumBy { it.joinToString("").toSet().size }
+    override fun solvePart1(): Int = answers.sumBy { it.joinToString("").toSet().size }
 
-    override fun solvePart2(): Int = input.sumBy { group ->
+    override fun solvePart2(): Int = answers.sumBy { group ->
         group.map { it.toSet() }.reduce { acc, set -> acc.intersect(set) }.size
     }
 }
