@@ -1,27 +1,22 @@
 package day_07
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "07"
-    val input = Input(dayNumber).getStrings {
-        this.replace(" bags| bag|\\.".toRegex(), "")
-            .replace("no other", "0")
-            .replace(" contain ", ":")
-    }
-    Day07(input).solve()
+    Day07().solve()
 }
 
-class Day07(var input: List<String> = emptyList()) : Day<Int, Int>("07") {
+class Day07(reader: Reader<RuleMap> = Day07Reader()) : Day<Int, Int>("07") {
+    private val ruleMap: RuleMap = reader.read()
 
     companion object {
         const val COLOR = "shiny gold"
     }
 
-    override fun solvePart1(): Int = RuleMap.parse(input).getPotentialParents(COLOR).size
+    override fun solvePart1(): Int = ruleMap.getPotentialParents(COLOR).size
 
-    override fun solvePart2(): Int = RuleMap.parse(input).countPotentialChildren(COLOR)
+    override fun solvePart2(): Int = ruleMap.countPotentialChildren(COLOR)
 
     class RuleMap(private val map: Map<String, Set<Pair<Int, String>>>) {
 
