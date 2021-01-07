@@ -1,16 +1,14 @@
 package day_08
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "08"
-    val input = Input(dayNumber).getStringPairs(" ")
-    Day08(input).solve()
+    Day08().solve()
 }
 
-class Day08(input: List<Pair<String, String>>) : Day<Int, Int>("08") {
-    private val bootCode: List<Instruction> = input.map { Instruction.parse(it) }
+class Day08(reader: Reader<List<Instruction>> = Day08Reader()) : Day<Int, Int>("08") {
+    private val bootCode: List<Instruction> = reader.read()
 
     override fun solvePart1(): Int = Game().run(bootCode).accumulator
 

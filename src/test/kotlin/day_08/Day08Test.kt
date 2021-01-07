@@ -11,17 +11,17 @@ class Day08Test {
     @Before
     fun setUp() {
         val input = listOf(
-            "nop" to "+0",
-            "acc" to "+1",
-            "jmp" to "+4",
-            "acc" to "+3",
-            "jmp" to "-3",
-            "acc" to "-99",
-            "acc" to "+1",
-            "jmp" to "-4",
-            "acc" to "+6"
+            "nop +0",
+            "acc +1",
+            "jmp +4",
+            "acc +3",
+            "jmp -3",
+            "acc -99",
+            "acc +1",
+            "jmp -4",
+            "acc +6"
         )
-        day = Day08(input)
+        day = Day08(Day08Reader(input))
     }
 
     @Test
