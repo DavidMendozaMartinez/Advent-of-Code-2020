@@ -1,18 +1,15 @@
 package day_10
 
 import Day
-import Input
+import Reader
 import kotlin.math.pow
 
 fun main() {
-    val dayNumber = "10"
-    val input = Input(dayNumber).getInts()
-    Day10(input).solve()
+    Day10().solve()
 }
 
-class Day10(var input: List<Int> = emptyList()) : Day<Int, Long>("10") {
-    private val ratings: List<Int>
-        get() = input.toMutableList().apply { add(0) }.sorted()
+class Day10(reader: Reader<List<Int>> = Day10Reader()) : Day<Int, Long>("10") {
+    private val ratings: List<Int> = reader.read()
 
     override fun solvePart1(): Int =
         ratings.partition { ratings.contains(it + 1) }.run { first.size * second.size }
