@@ -10,7 +10,7 @@ class Day11Test {
 
     @Before
     fun setUp() {
-        val rawInput = listOf(
+        val input = listOf(
             "L.LL.LL.LL",
             "LLLLLLL.LL",
             "L.L.L..L..",
@@ -22,8 +22,7 @@ class Day11Test {
             "L.LLLLLL.L",
             "L.LLLLL.LL"
         )
-        val input = rawInput.map { it.toList() }
-        day = Day11(input)
+        day = Day11(Day11Reader(input))
     }
 
     @Test

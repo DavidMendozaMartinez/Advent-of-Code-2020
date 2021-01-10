@@ -1,24 +1,23 @@
 package day_11
 
 import Day
-import Input
+import Reader
 import kotlin.properties.Delegates
 
 private typealias Seat = Pair<Int, Int>
 
 fun main() {
-    val dayNumber = "11"
-    val input = Input(dayNumber).getCharMatrix()
-    Day11(input).solve()
+    Day11().solve()
 }
 
-class Day11(private val input: List<List<Char>>) : Day<Int, Int>("11") {
+class Day11(reader: Reader<List<List<Char>>> = Day11Reader()) : Day<Int, Int>("11") {
+    private val initial: List<List<Char>> = reader.read()
 
     override fun solvePart1(): Int =
-        SeatLayout(input, Rule(4, ::getAdjacent)).apply { stabilize() }.countOccupiedSeats()
+        SeatLayout(initial, Rule(4, ::getAdjacent)).apply { stabilize() }.countOccupiedSeats()
 
     override fun solvePart2(): Int =
-        SeatLayout(input, Rule(5, ::getFirstVisible)).apply { stabilize() }.countOccupiedSeats()
+        SeatLayout(initial, Rule(5, ::getFirstVisible)).apply { stabilize() }.countOccupiedSeats()
 
     private fun getAdjacent(seat: Seat, seats: List<Seat>): List<Seat> = mutableListOf<Seat>().apply {
         listOf(0 to 1, 1 to 1, 1 to 0, 1 to -1, 0 to -1, -1 to -1, -1 to 0, -1 to 1).forEach {
