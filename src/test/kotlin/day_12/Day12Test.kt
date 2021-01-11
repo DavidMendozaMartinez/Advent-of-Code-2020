@@ -11,7 +11,7 @@ class Day12Test {
     @Before
     fun setUp() {
         val input = listOf("F10", "N3", "F7", "R90", "F11")
-        day = Day12(input)
+        day = Day12(Day12Reader(input))
     }
 
     @Test

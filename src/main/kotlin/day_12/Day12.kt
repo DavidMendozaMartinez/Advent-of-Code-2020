@@ -1,17 +1,15 @@
 package day_12
 
 import Day
-import Input
+import Reader
 import kotlin.math.abs
 
 fun main() {
-    val dayNumber = "12"
-    val input = Input(dayNumber).getStrings()
-    Day12(input).solve()
+    Day12().solve()
 }
 
-class Day12(input: List<String>) : Day<Int, Int>("12") {
-    private val instructions: List<Instruction> = input.map { Instruction.parse(it) }
+class Day12(reader: Reader<List<Instruction>> = Day12Reader()) : Day<Int, Int>("12") {
+    private val instructions: List<Instruction> = reader.read()
 
     override fun solvePart1(): Int =
         Navigation(facing = Direction.EAST, execution = ::interpret).apply { run(instructions) }.manhattanDistance()
