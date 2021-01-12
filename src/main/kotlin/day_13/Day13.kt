@@ -1,17 +1,15 @@
 package day_13
 
 import Day
-import Input
+import Reader
 
 fun main() {
-    val dayNumber = "13"
-    val input = Input(dayNumber).getStrings()
-    Day13(input).solve()
+    Day13().solve()
 }
 
-class Day13(input: List<String>) : Day<Int, Long>("13") {
-    private val earliestTimestamp: Int = input.first().toInt()
-    private val ids: List<String> = input.last().split(',')
+class Day13(reader: Reader<Pair<Int, List<String>>> = Day13Reader()) : Day<Int, Long>("13") {
+    private val earliestTimestamp: Int = reader.read().first
+    private val ids: List<String> = reader.read().second
     private val inService: List<Int> = ids.filter { it != "x" }.map { it.toInt() }
 
     override fun solvePart1(): Int =
